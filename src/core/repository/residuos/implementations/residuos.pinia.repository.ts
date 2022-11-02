@@ -1,23 +1,50 @@
 import { ResiduosRepositoryInterface, Residuo } from 'src/core/repository/residuos/residuos.repository.interface'
+import { useResiduoStore } from 'src/stores/residuos-store'
 
 export class ResiduosPiniaRepository implements ResiduosRepositoryInterface {
-  createResiduo (data: Residuo): Promise<void> {
-    return Promise.resolve(undefined)
+  async createResiduo (data: Residuo): Promise<void> {
+    try {
+      const store = useResiduoStore()
+      await store.create(data)
+    } catch (e) {
+      console.log(e)
+      throw new Error('Não foi possível criar o novo resíduo')
+    }
   }
 
-  deleteResiduo (data: Residuo): Promise<void> {
-    return Promise.resolve(undefined)
+  async deleteResiduo (id: string): Promise<void> {
+    try {
+      const store = useResiduoStore()
+      await store.deleteResiduo(id)
+    } catch (e) {
+      throw new Error('Não foi possível deletar resíduo')
+    }
   }
 
-  getResiduoById (id: string): Promise<Residuo> {
-    return Promise.resolve({} as Residuo)
+  async getResiduoById (id: string): Promise<Residuo> {
+    try {
+      const store = useResiduoStore()
+      return store.getById(id)
+    } catch (e) {
+      throw new Error('Não foi possível buscar este resíduo')
+    }
   }
 
-  getResiduos (): Promise<Residuo[]> {
-    return Promise.resolve([])
+  async getResiduos (): Promise<Residuo[]> {
+    try {
+      const store = useResiduoStore()
+      return store.getResiduos()
+    } catch (e) {
+      throw new Error('Erro ao buscar resíduos')
+    }
   }
 
-  updateResiduo (data: Residuo): Promise<void> {
-    return Promise.resolve(undefined)
+  async updateResiduo (data: Residuo): Promise<void> {
+    try {
+      const store = useResiduoStore()
+      return store.updateResiduo(data)
+    } catch (e) {
+      throw new Error('Não foi possível atualizar resíduo')
+    }
   }
 }

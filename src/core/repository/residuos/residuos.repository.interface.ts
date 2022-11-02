@@ -11,5 +11,5 @@ export interface ResiduosRepositoryInterface {
   getResiduoById(id: string):Promise<Residuo>
   createResiduo(data: Residuo):Promise<void>
   updateResiduo(data: Residuo):Promise<void>
-  deleteResiduo(data: Residuo):Promise<void>
+  deleteResiduo(id: string):Promise<void>
 }
