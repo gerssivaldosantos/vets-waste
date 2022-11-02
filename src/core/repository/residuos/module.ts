@@ -1,5 +1,5 @@
 import { ResiduosPiniaRepository } from './implementations/residuos.pinia.repository'
 
-const repository = new ResiduosPiniaRepository()
+const residuoRepository = new ResiduosPiniaRepository()
 
-export { repository }
+export { residuoRepository }
