@@ -8,7 +8,7 @@ export type Residuo = {
 
 export interface ResiduosRepositoryInterface {
   getResiduos():Promise<Residuo[]>
-  getResiduoById(id: string):Promise<Residuo>
+  getResiduoById(id: string):Promise<Residuo | undefined>
   createResiduo(data: Residuo):Promise<void>
   updateResiduo(data: Residuo):Promise<void>
   deleteResiduo(data: Residuo):Promise<void>
