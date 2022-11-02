@@ -1,42 +1,57 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
-  </q-page>
-</template>
+  <q-page class="page">
+    <q-item clickable v-ripple round class="items">
+      <q-item-section avatar>
+        <q-avatar rounded>
+          <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+        </q-avatar>
+      </q-item-section>
+      <q-item-section>Image rounded avatar</q-item-section>
+    </q-item>
+    <q-table
+      grid
+      :rows="rows"
+      row-key="name">
+      <template v-slot:item="{row}" class="">
+        <q-card>
+          {{ row.name }}
+        </q-card>
+    </template>
+    </q-table>
+    <q-btn round icon="add" class="bnt" />
+   </q-page>
+ </template>
 
 <script setup lang="ts">
-import { Todo, Meta } from 'components/models'
-import ExampleComponent from 'components/ExampleComponent.vue'
-import { ref } from 'vue'
 
-const todos = ref<Todo[]>([
+const rows = [
   {
-    id: 1,
-    content: 'ct1'
-  },
-  {
-    id: 2,
-    content: 'ct2'
-  },
-  {
-    id: 3,
-    content: 'ct3'
-  },
-  {
-    id: 4,
-    content: 'ct4'
-  },
-  {
-    id: 5,
-    content: 'ct5'
+    name: 'Frozen Yogurt',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+    sodium: 87,
+    calcium: '14%',
+    iron: '1%'
   }
-])
-const meta = ref<Meta>({
-  totalCount: 1200
-})
+]
 </script>
+
+<style lang="scss">
+*{
+  background: rgba(43, 192, 138, 0.05);
+}
+.items{
+  background: #FFFFFF;
+  max-width: 90%;
+  margin-left: 5%;
+  border-radius: 20px;
+};
+.bnt{
+  background: #135B46;
+  position: absolute;
+  right: 16px;
+};
+
+</style>
