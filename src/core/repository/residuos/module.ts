@@ -1,4 +1,4 @@
-import { ResiduosPiniaRepository } from './implementations/residuos.pinia.repository'
+import { ResiduosPiniaRepository } from './implementations/pinia/residuos.pinia.repository'
 
 const residuoRepository = new ResiduosPiniaRepository()
 
