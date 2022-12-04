@@ -1,26 +1,23 @@
 <template>
-  <div class="q-pa-md page" style="max-width: 400px">
-    <q-page class="page">
+    <q-page>
+      <div class="top-canva"></div>
+      <div class="bottom-canva"></div>
       <q-form
         @submit="onSubmit"
-        class="q-gutter-md"
+        class="main-form"
       >
-
-      <!-- Fundo Verde -->
-      <div>
 
         <!-- Botão de voltar  -->
         <div>
           <q-btn class="btn-back" round icon="arrow_back" />
         </div>
-      </div>
 
       <!-- Form -->
 
         <h6 class="align-center"> Criar Novo Resíduo</h6>
         <!-- Nome -->
 
-        <q-item-label class="item-label"> Nome:</q-item-label>
+        <q-item-label class="item-label"> Nome</q-item-label>
           <q-input
             class="input"
             color="teal"
@@ -34,7 +31,7 @@
             />
 
         <!-- Descrição -->
-        <q-item-label class="item-label"> Descrição: </q-item-label>
+        <q-item-label class="item-label"> Descrição </q-item-label>
           <q-input
             color="teal"
             bg-color="white"
@@ -47,9 +44,9 @@
           />
 
           <!-- Método de Descarte -->
-          <q-item-label class="item-label"> Método de Descarte: </q-item-label>
+          <q-item-label class="item-label"> Método de Descarte </q-item-label>
             <q-editor
-                class="rounded"
+                class="discard-method-input"
                 v-model="disposalMethod"
                 min-height="5rem"
               />
@@ -60,8 +57,6 @@
 
       </q-form>
     </q-page>
-
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -80,14 +75,18 @@ const onSubmit = () => {
 
 <style  setup lang="scss">
 
-.circle{
-  background-color: rgba(18, 170, 115, 1);
+.item-label {
+  padding: 0.5rem 0 0.5rem 0.9rem;
 }
 
-.page{
-  background-color: rgba(191, 219, 209, 1);
-  display: flex;
+.discard-method-input {
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
 
+.q-page {
+  padding: 2rem;
+  background-color: #12AA73;
 }
 
 .btn-back{
@@ -99,19 +98,31 @@ const onSubmit = () => {
   background-color: rgba(19, 91, 70, 1);
   color: white;
   align-items: center;
-}
-
-.item-label{
-  margin-left: 40px;
-  margin-bottom: -15px;
-}
-
-.rounded{
- border-radius: 1rem;
+  width: 75%;
 }
 
 .align-center{
   text-align: center;
+}
+
+.top-canva {
+  position: absolute;
+  width: 100vw;
+  height: 25vh;
+  border-radius: 100%;
+  bottom: 58vh;
+  left: 0;
+  background-color: rgba(191, 219, 209, 1);
+
+}
+
+.bottom-canva {
+  position: absolute;
+  height: 70vh;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(191, 219, 209, 1);
 }
 
 </style>
